@@ -8,6 +8,8 @@
 #include "AddCommand.h"
 #include "RemoveCommand.h"
 #include "UpdateCommand.h"
+#include <QShortcut>
+#include <QKeySequence>
 
 class AdminForm : public QMainWindow
 {
@@ -35,6 +37,8 @@ private slots:
     void on_pushButtonUpdate_clicked();
     void on_pushButtonUndo_clicked();
     void on_pushButtonRedo_clicked();
+    void on_undoShortcut_activated();
+    void on_redoShortcut_activated();
 
 private:
     Ui::AdminWindowClass* ui;
@@ -51,4 +55,5 @@ private:
         *labelErrorAdd, *labelErrorRemove, *labelErrorUpdate;
 
     QPushButton *pushButtonAdd, *pushButtonRemove, *pushButtonUpdate, *pushButtonUndo, *pushButtonRedo;   
+    QShortcut *undoShortcut, *redoShortcut;
 };

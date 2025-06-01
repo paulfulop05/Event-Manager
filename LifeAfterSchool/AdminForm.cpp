@@ -213,6 +213,13 @@ void AdminForm::InitComponents()
     gridLayout_4->addWidget(groupBox_2, 1, 2, 5, 1);
     gridLayout_4->addWidget(groupBox_4, 2, 1, 4, 1);
 
+    undoShortcut = new QShortcut(QKeySequence("Ctrl+Z"), this);
+    redoShortcut = new QShortcut(QKeySequence("Ctrl+Y"), this);
+    undoShortcut->setObjectName("undoShortcut");
+    redoShortcut->setObjectName("redoShortcut");
+    undoShortcut->setContext(Qt::ApplicationShortcut);
+    redoShortcut->setContext(Qt::ApplicationShortcut);
+
     this->setCentralWidget(centralwidget);
 
     QFont font;
@@ -431,6 +438,14 @@ void AdminForm::on_pushButtonUpdate_clicked()
         labelErrorUpdate->setStyleSheet("color:#822d27");
         labelErrorUpdate->setText(e.what());
     }
+}
+
+void AdminForm::on_undoShortcut_activated() {
+    on_pushButtonUndo_clicked();
+}
+
+void AdminForm::on_redoShortcut_activated() {
+    on_pushButtonRedo_clicked();
 }
 
 void AdminForm::on_pushButtonUndo_clicked() {

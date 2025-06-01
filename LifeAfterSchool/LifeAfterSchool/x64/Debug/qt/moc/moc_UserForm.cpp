@@ -51,7 +51,9 @@ template <> constexpr inline auto UserForm::qt_create_metaobjectdata<qt_meta_tag
         "row",
         "column",
         "on_pushButtonUndo_clicked",
-        "on_pushButtonRedo_clicked"
+        "on_pushButtonRedo_clicked",
+        "on_undoShortcut_activated",
+        "on_redoShortcut_activated"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -75,6 +77,10 @@ template <> constexpr inline auto UserForm::qt_create_metaobjectdata<qt_meta_tag
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_pushButtonRedo_clicked'
         QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_undoShortcut_activated'
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_redoShortcut_activated'
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -106,6 +112,8 @@ void UserForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 5: _t->on_tableWidgetUserEvents_cellDoubleClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 6: _t->on_pushButtonUndo_clicked(); break;
         case 7: _t->on_pushButtonRedo_clicked(); break;
+        case 8: _t->on_undoShortcut_activated(); break;
+        case 9: _t->on_redoShortcut_activated(); break;
         default: ;
         }
     }
@@ -130,14 +138,14 @@ int UserForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 10;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }

@@ -10,6 +10,8 @@
 #include "RemoveCommand.h"
 #include "UpdateCommand.h"
 #include <QCloseEvent>
+#include <QShortcut>
+#include <QKeySequence>
 
 class UserForm : public QMainWindow
 {
@@ -40,6 +42,8 @@ private slots:
     void on_tableWidgetUserEvents_cellDoubleClicked(int row, int column);
     void on_pushButtonUndo_clicked();
     void on_pushButtonRedo_clicked();
+    void on_undoShortcut_activated();
+    void on_redoShortcut_activated();
 
 private:
     Ui::UserWindowClass* ui;
@@ -52,4 +56,5 @@ private:
     QPushButton *pushButtonNext, *pushButtonAdd, *pushButtonViewCSV, *pushButtonViewHTML, *pushButtonUndo, *pushButtonRedo;
     QComboBox* comboBoxMonths;
     QLabel* label;
+    QShortcut *undoShortcut, *redoShortcut;
 };

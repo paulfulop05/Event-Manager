@@ -184,6 +184,13 @@ void UserForm::InitComponents()
 
     gridLayout_3->addWidget(groupBox_3, 1, 1, 1, 1);
 
+    undoShortcut = new QShortcut(QKeySequence("Ctrl+Z"), this);
+    redoShortcut = new QShortcut(QKeySequence("Ctrl+Y"), this);
+    undoShortcut->setObjectName("undoShortcut");
+    redoShortcut->setObjectName("redoShortcut");
+    undoShortcut->setContext(Qt::ApplicationShortcut);
+    redoShortcut->setContext(Qt::ApplicationShortcut);
+
     this->setCentralWidget(centralwidget);
 }
 
@@ -452,6 +459,14 @@ void UserForm::on_pushButtonViewHTML_clicked()
     catch (const std::exception e) {
         pushButtonViewHTML->setText(e.what());
     }
+}
+
+void UserForm::on_undoShortcut_activated() {
+    on_pushButtonUndo_clicked();
+}
+
+void UserForm::on_redoShortcut_activated() {
+    on_pushButtonRedo_clicked();
 }
 
 void UserForm::on_pushButtonUndo_clicked() {
