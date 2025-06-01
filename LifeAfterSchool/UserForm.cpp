@@ -359,7 +359,9 @@ void UserForm::on_pushButtonAdd_clicked()
         if (!rc)
             throw OutOfRangeException();
 
-        serv->AddUserEvent((((currentRow - 1) % rc) + rc) % rc);
+        Event newEvent = serv->globalRepo->events[(((currentRow - 1) % rc) + rc) % rc];
+        cmdManager->CommandExecute(new AddCommand(nullptr, serv, newEvent, UserService));
+        //serv->AddUserEvent((((currentRow - 1) % rc) + rc) % rc);
 
         int newRow = tableWidgetUserEvents->rowCount();
         tableWidgetUserEvents->insertRow(newRow);
@@ -450,11 +452,13 @@ void UserForm::on_pushButtonViewHTML_clicked()
 }
 
 void UserForm::on_pushButtonUndo_clicked() {
-    pushButtonUndo->setText("Test");
+    cmdManager->CommandUndo();
+    StoreUserData();
 }
 
 void UserForm::on_pushButtonRedo_clicked() {
-    pushButtonRedo->setText("Test");
+    cmdManager->CommandRedo();
+    StoreUserData();
 }
 
 void UserForm::on_comboBoxMonths_currentIndexChanged(int index)
@@ -464,7 +468,11 @@ void UserForm::on_comboBoxMonths_currentIndexChanged(int index)
 
 void UserForm::on_tableWidgetUserEvents_cellDoubleClicked(int row, int column)
 {
-    serv->RemoveUserEvent(tableWidgetUserEvents->item(row, 0)->text().toStdString());
+    Event event = Event();
+    event.title = tableWidgetUserEvents->item(row, 0)->text().toStdString();
+    cmdManager->CommandExecute(new RemoveCommand(nullptr, serv, event, UserService));
+
+    //serv->RemoveUserEvent(tableWidgetUserEvents->item(row, 0)->text().toStdString());
     StoreUserData();
     StoreGlobalData();
 }

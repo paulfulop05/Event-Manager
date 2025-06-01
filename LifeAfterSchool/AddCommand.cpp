@@ -4,7 +4,7 @@ AddCommand::AddCommand(ServiceAM* _globalServ, ServiceUM* _userServ, Event _newE
 	Command(_globalServ, _userServ), newEvent(_newEvent), whichServ(_whichServ){ }
 
 void AddCommand::Execute() {
-	whichServ == AdminService ? globalServ->AddEvent(newEvent) : userServ->AddUserEvent(globalServ->FindEvent(newEvent));
+	whichServ == AdminService ? globalServ->AddEvent(newEvent) : userServ->AddUserEvent(userServ->FindEvent(newEvent));
 }
 void AddCommand::Undo() {
 	whichServ == AdminService ? globalServ->RemoveEvent(newEvent.title) : userServ->RemoveUserEvent(newEvent.title);

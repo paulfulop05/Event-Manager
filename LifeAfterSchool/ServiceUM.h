@@ -42,6 +42,8 @@ public:
  **/
     Repository* GetEventsByMonth(int month) const;
 
+    int FindEvent(Event event);
+
  /**
      @brief  used for displaying the events
      @retval  - a string containing all events in the user list

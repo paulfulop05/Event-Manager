@@ -84,6 +84,14 @@ Repository* ServiceUM::GetEventsByMonth(int month) const
 	return nullptr;
 }
 
+int ServiceUM::FindEvent(Event event) {
+	for (int i = 0; i < globalRepo->events.size(); ++i) {
+		if (globalRepo->events[i] == event) return i;
+	}
+
+	throw InexistentEventException();
+}
+
 std::string ServiceUM::ListUserEvents() const
 {
 	if (userRepo != nullptr)
