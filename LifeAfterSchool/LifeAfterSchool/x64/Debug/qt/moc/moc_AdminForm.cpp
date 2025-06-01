@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../../../AdminForm.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -42,7 +43,9 @@ template <> constexpr inline auto AdminForm::qt_create_metaobjectdata<qt_meta_ta
         "on_pushButtonAdd_clicked",
         "",
         "on_pushButtonRemove_clicked",
-        "on_pushButtonUpdate_clicked"
+        "on_pushButtonUpdate_clicked",
+        "on_pushButtonUndo_clicked",
+        "on_pushButtonRedo_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -52,6 +55,10 @@ template <> constexpr inline auto AdminForm::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_pushButtonUpdate_clicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButtonUndo_clicked'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButtonRedo_clicked'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -78,6 +85,8 @@ void AdminForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: _t->on_pushButtonAdd_clicked(); break;
         case 1: _t->on_pushButtonRemove_clicked(); break;
         case 2: _t->on_pushButtonUpdate_clicked(); break;
+        case 3: _t->on_pushButtonUndo_clicked(); break;
+        case 4: _t->on_pushButtonRedo_clicked(); break;
         default: ;
         }
     }
@@ -103,14 +112,14 @@ int AdminForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

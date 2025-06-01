@@ -50,3 +50,11 @@ void ServiceAM::UpdateEvent(Event event, Event new_event)
 		}
 	}
 }
+
+int ServiceAM::FindEvent(Event event) {
+	for (int i = 0; i < repo->events.size(); ++i) {
+		if (repo->events[i] == event) return i;
+	}
+
+	throw InexistentEventException();
+}

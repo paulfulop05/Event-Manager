@@ -33,16 +33,18 @@ private slots:
     void on_pushButtonViewHTML_clicked();
     void on_comboBoxMonths_currentIndexChanged(int index);
     void on_tableWidgetUserEvents_cellDoubleClicked(int row, int column);
+    void on_pushButtonUndo_clicked();
+    void on_pushButtonRedo_clicked();
 
 private:
     Ui::UserWindowClass* ui;
     int currentRow = 1;
 
     QWidget* centralwidget;
-    QGridLayout *gridLayout_3, *gridLayout_2, *gridLayout;
-    QGroupBox *groupBox_2, *groupBox;
+    QGridLayout *gridLayout_3, *gridLayout_2, *gridLayout, *gridLayout_4;
+    QGroupBox *groupBox_2, *groupBox, *groupBox_3;
     QTableWidget *tableWidgetUserEvents, *tableWidgetAdminEvents;
-    QPushButton *pushButtonNext, *pushButtonAdd, *pushButtonViewCSV, *pushButtonViewHTML;
+    QPushButton *pushButtonNext, *pushButtonAdd, *pushButtonViewCSV, *pushButtonViewHTML, *pushButtonUndo, *pushButtonRedo;
     QComboBox* comboBoxMonths;
     QLabel* label;
 };

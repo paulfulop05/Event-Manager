@@ -79,7 +79,7 @@ void AdminForm::InitComponents()
     tableWidgetEvents->setRowCount(0);
     tableWidgetEvents->setColumnCount(5);
 
-    gridLayout_4->addWidget(tableWidgetEvents, 0, 0, 1, 3);
+    gridLayout_4->addWidget(tableWidgetEvents, 0, 0, 1, 4);
 
     // Add groupBox
     groupBox = new QGroupBox(centralwidget);
@@ -133,7 +133,7 @@ void AdminForm::InitComponents()
     label_7 = new QLabel(groupBox); label_7->setObjectName("label_7");
     gridLayout->addWidget(label_7, 4, 0, 1, 1);
 
-    gridLayout_4->addWidget(groupBox, 1, 0, 1, 1);
+    gridLayout_4->addWidget(groupBox, 1, 0, 5, 1);
 
     groupBox_3 = new QGroupBox(centralwidget);
     groupBox_3->setObjectName("groupBox_3");
@@ -186,7 +186,21 @@ void AdminForm::InitComponents()
     labelErrorUpdate = new QLabel(groupBox_2);
     labelErrorUpdate->setObjectName("labelErrorUpdate");
 
-    pushButtonUpdate = new QPushButton(groupBox_2); pushButtonUpdate->setObjectName("pushButtonUpdate");
+    pushButtonUpdate = new QPushButton(groupBox_2);
+    pushButtonUpdate->setObjectName("pushButtonUpdate");
+
+    groupBox_4 = new QGroupBox(centralwidget);
+    groupBox_4->setObjectName("groupBox_4");
+    gridLayout_5 = new QGridLayout(groupBox_4);
+    gridLayout_5->setObjectName("gridLayout_5");
+
+    pushButtonUndo = new QPushButton(groupBox_4);
+    pushButtonUndo->setObjectName("pushButtonUndo");
+    gridLayout_5->addWidget(pushButtonUndo, 0, 0, 1, 2);
+
+    pushButtonRedo = new QPushButton(groupBox_4);
+    pushButtonRedo->setObjectName("pushButtonRedo");
+    gridLayout_5->addWidget(pushButtonRedo, 1, 0, 1, 2);
 
     gridLayout_2->addWidget(label_5, 0, 0, 1, 1);
     gridLayout_2->addWidget(label_8, 1, 0, 1, 1);
@@ -196,7 +210,8 @@ void AdminForm::InitComponents()
     gridLayout_2->addWidget(labelErrorUpdate, 5, 0, 1, 2);
     gridLayout_2->addWidget(pushButtonUpdate, 6, 0, 1, 2);
 
-    gridLayout_4->addWidget(groupBox_2, 1, 2, 1, 1);
+    gridLayout_4->addWidget(groupBox_2, 1, 2, 5, 1);
+    gridLayout_4->addWidget(groupBox_4, 2, 1, 4, 1);
 
     this->setCentralWidget(centralwidget);
 
@@ -229,6 +244,9 @@ void AdminForm::SetProps()
     groupBox_2->setAlignment(Qt::AlignCenter);
     groupBox_3->setFont(font1);
     groupBox_3->setAlignment(Qt::AlignCenter);
+    groupBox_4->setFont(font1);
+    groupBox_4->setAlignment(Qt::AlignCenter);
+    groupBox_4->setTitle("Undo and Redo");
 
     QFont font2;
     font2.setPointSize(10);
@@ -240,6 +258,16 @@ void AdminForm::SetProps()
     pushButtonAdd->setFont(font3);
     pushButtonRemove->setFont(font3);
     pushButtonUpdate->setFont(font3);
+    pushButtonUndo->setFont(font3);
+    pushButtonRedo->setFont(font3);
+
+    pushButtonUndo->setText("Undo");
+    pushButtonRedo->setText("Redo");
+
+    QFont font4;
+    font4.setPointSize(11);
+    font4.setBold(false);
+    tableWidgetEvents->setFont(font4);
 
     // Set fonts and alignments for labels
     QList<QLabel*> labels = { label, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10, label_11, labelErrorAdd, labelErrorRemove, labelErrorUpdate };
@@ -393,6 +421,14 @@ void AdminForm::on_pushButtonUpdate_clicked()
         labelErrorUpdate->setStyleSheet("color:#822d27");
         labelErrorUpdate->setText(e.what());
     }
+}
+
+void AdminForm::on_pushButtonUndo_clicked() {
+    pushButtonUndo->setText("Test");
+}
+
+void  AdminForm::on_pushButtonRedo_clicked() {
+    pushButtonRedo->setText("Test");
 }
 
 void AdminForm::closeEvent(QCloseEvent* event)

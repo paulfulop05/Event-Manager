@@ -145,6 +145,12 @@ void UserForm::InitComponents()
     gridLayout_2 = new QGridLayout(groupBox_2);
     tableWidgetUserEvents = new QTableWidget(groupBox_2);
 
+    groupBox_3 = new QGroupBox(centralwidget);
+
+
+    gridLayout_4 = new QGridLayout(groupBox_3);
+
+
     gridLayout_2->addWidget(tableWidgetUserEvents, 0, 0, 1, 1);
     gridLayout_3->addWidget(groupBox_2, 0, 1, 1, 1);
 
@@ -168,7 +174,15 @@ void UserForm::InitComponents()
     gridLayout_2->addWidget(pushButtonViewCSV, 1, 0, 1, 1);
     gridLayout_2->addWidget(pushButtonViewHTML, 2, 0, 1, 1);
 
-    gridLayout_3->addWidget(groupBox, 0, 0, 1, 1);
+    gridLayout_3->addWidget(groupBox, 0, 0, 2, 1);
+
+    pushButtonUndo = new QPushButton(groupBox_3);
+    gridLayout_4->addWidget(pushButtonUndo, 0, 0, 1, 1);
+
+    pushButtonRedo = new QPushButton(groupBox_3);
+    gridLayout_4->addWidget(pushButtonRedo, 1, 0, 1, 1);
+
+    gridLayout_3->addWidget(groupBox_3, 1, 1, 1, 1);
 
     this->setCentralWidget(centralwidget);
 }
@@ -188,6 +202,8 @@ void UserForm::SetProps()
 
     centralwidget->setObjectName("centralwidget");
     gridLayout_3->setObjectName("gridLayout_3");
+    gridLayout_4->setObjectName("gridLayout_4");
+
 
     groupBox_2->setObjectName("groupBox_2");
     gridLayout_2->setObjectName("gridLayout_2");
@@ -216,9 +232,23 @@ void UserForm::SetProps()
     QFont font1;
     font1.setPointSize(11);
     font1.setBold(true);
+
     font1.setStyleStrategy(QFont::PreferDefault);
     comboBoxMonths->setFont(font1);
     comboBoxMonths->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToMinimumContentsLengthWithIcon);
+
+    groupBox_3->setObjectName("groupBox_3");
+    groupBox_3->setTitle("Undo and Redo");
+    groupBox_3->setAlignment(Qt::AlignCenter);
+    groupBox_3->setFont(font1);
+    groupBox->setFont(font1);
+    groupBox_2->setFont(font1);
+
+    QFont font3;
+    font3.setPointSize(11);
+    font3.setBold(false);
+    tableWidgetAdminEvents->setFont(font3);
+    tableWidgetUserEvents->setFont(font3);
 
     pushButtonNext->setObjectName("pushButtonNext");
     QFont font2;
@@ -311,6 +341,14 @@ void UserForm::SetProps()
     tableWidgetAdminEvents->horizontalHeaderItem(3)->setText(QCoreApplication::translate("UserWindowClass", "Number of Participants", nullptr));
     tableWidgetAdminEvents->horizontalHeaderItem(4)->setText(QCoreApplication::translate("UserWindowClass", "Link", nullptr));
     pushButtonAdd->setText(QCoreApplication::translate("UserWindowClass", "Add", nullptr));
+
+    pushButtonUndo->setObjectName("pushButtonUndo");
+    pushButtonUndo->setText(QCoreApplication::translate("UserWindowClass", "Undo", nullptr));
+    pushButtonUndo->setFont(font2);
+
+    pushButtonRedo->setObjectName("pushButtonRedo");
+    pushButtonRedo->setText(QCoreApplication::translate("UserWindowClass", "Redo", nullptr));
+    pushButtonRedo->setFont(font2);
 }
 
 void UserForm::on_pushButtonAdd_clicked()
@@ -409,6 +447,14 @@ void UserForm::on_pushButtonViewHTML_clicked()
     catch (const std::exception e) {
         pushButtonViewHTML->setText(e.what());
     }
+}
+
+void UserForm::on_pushButtonUndo_clicked() {
+    pushButtonUndo->setText("Test");
+}
+
+void UserForm::on_pushButtonRedo_clicked() {
+    pushButtonRedo->setText("Test");
 }
 
 void UserForm::on_comboBoxMonths_currentIndexChanged(int index)

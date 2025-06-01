@@ -28,13 +28,15 @@ private slots:
     void on_pushButtonAdd_clicked();
     void on_pushButtonRemove_clicked();
     void on_pushButtonUpdate_clicked();
+    void on_pushButtonUndo_clicked();
+    void on_pushButtonRedo_clicked();
 
 private:
     Ui::AdminWindowClass* ui;
     QWidget* centralwidget;
-    QGridLayout *gridLayout, *gridLayout_2, *gridLayout_3, *gridLayout_4;
+    QGridLayout *gridLayout, *gridLayout_2, *gridLayout_3, *gridLayout_4, *gridLayout_5;
     QTableWidget* tableWidgetEvents;
-    QGroupBox *groupBox, *groupBox_2, *groupBox_3;
+    QGroupBox *groupBox, *groupBox_2, *groupBox_3, *groupBox_4;
 
     QLineEdit *lineEditPartAdd, *lineEditDateAdd, *lineEditDescriptionAdd, *lineEditTitleAdd, *lineEditLinkAdd,
         *lineEditEventRemove, *lineEditDateUpdate, *lineEditTitleUpdate, *lineEditDescriptionUpdate,
@@ -43,5 +45,5 @@ private:
     QLabel *label, *label_2, *label_3, *label_4, *label_5, *label_6, *label_7, *label_8, *label_9, *label_10, *label_11,
         *labelErrorAdd, *labelErrorRemove, *labelErrorUpdate;
 
-    QPushButton *pushButtonAdd, *pushButtonRemove, *pushButtonUpdate;   
+    QPushButton *pushButtonAdd, *pushButtonRemove, *pushButtonUpdate, *pushButtonUndo, *pushButtonRedo;   
 };
