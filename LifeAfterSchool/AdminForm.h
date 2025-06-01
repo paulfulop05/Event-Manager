@@ -10,6 +10,7 @@
 #include "UpdateCommand.h"
 #include <QShortcut>
 #include <QKeySequence>
+#include "EventsTableModel.h"
 
 class AdminForm : public QMainWindow
 {
@@ -56,4 +57,5 @@ private:
 
     QPushButton *pushButtonAdd, *pushButtonRemove, *pushButtonUpdate, *pushButtonUndo, *pushButtonRedo;   
     QShortcut *undoShortcut, *redoShortcut;
+    EventsTableModel* eventsTableModel;
 };

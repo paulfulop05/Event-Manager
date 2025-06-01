@@ -297,7 +297,7 @@ void UserForm::SetProps()
     pushButtonAdd->setFont(font2);
 
     // Translations & Text
-    this->setWindowTitle(QCoreApplication::translate("UserWindowClass", "User Events", nullptr));
+    this->setWindowTitle(QCoreApplication::translate("UserWindowClass", "Manage User Events", nullptr));
     groupBox_2->setTitle(QCoreApplication::translate("UserWindowClass", "Your List", nullptr));
     groupBox->setTitle(QCoreApplication::translate("UserWindowClass", "Add events to your list", nullptr));
 

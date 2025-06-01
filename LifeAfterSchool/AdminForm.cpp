@@ -287,7 +287,7 @@ void AdminForm::SetProps()
     }
 
     // Texts
-    this->setWindowTitle("Admin");
+    this->setWindowTitle("Manage Admin Events");
 
     tableWidgetEvents->setHorizontalHeaderItem(0, __qtablewidgetitem);
     tableWidgetEvents->setHorizontalHeaderItem(1, __qtablewidgetitem1);
