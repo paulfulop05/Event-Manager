@@ -98,6 +98,10 @@ void MainWindow::SetProps()
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete adminView;
+    delete userView;
+    delete adminEventsModel;
+    delete userEventsModel;
 }
 
 void MainWindow::on_pushButtonSeeUserEvents_clicked()
