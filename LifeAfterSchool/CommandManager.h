@@ -6,7 +6,6 @@ class CommandManager {
 private:
 	std::stack<Command*> undoStack;
 	std::stack<Command*> redoStack;
-
 public:
 	void CommandExecute(Command* cmd);
 	void CommandUndo();

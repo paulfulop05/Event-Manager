@@ -4,6 +4,10 @@
 #include <QCloseEvent>
 #include "ui_AdminForm.h"
 #include "ServiceAM.h"
+#include "CommandManager.h"
+#include "AddCommand.h"
+#include "RemoveCommand.h"
+#include "UpdateCommand.h"
 
 class AdminForm : public QMainWindow
 {
@@ -12,8 +16,9 @@ class AdminForm : public QMainWindow
 public:
     ServiceAM* serv;
     QWidget* mainWindow;
+    CommandManager* cmdManager;
 
-    explicit AdminForm(QWidget* parent = nullptr, ServiceAM* _serv = new ServiceAM, QWidget* _mainWindow = nullptr);
+    explicit AdminForm(QWidget* parent = nullptr, ServiceAM* _serv = new ServiceAM, QWidget* _mainWindow = nullptr, CommandManager* _cmdManager = new CommandManager);
     ~AdminForm();
 
     void StoreData();

@@ -5,6 +5,10 @@
 #include "ServiceUM.h"
 #include "CSVEventViewer.h"
 #include "HTMLEventViewer.h"
+#include "CommandManager.h"
+#include "AddCommand.h"
+#include "RemoveCommand.h"
+#include "UpdateCommand.h"
 #include <QCloseEvent>
 
 class UserForm : public QMainWindow
@@ -14,7 +18,8 @@ class UserForm : public QMainWindow
 public:
     ServiceUM* serv;
     QWidget* mainWindow;
-    explicit UserForm(QWidget* parent = nullptr, ServiceUM* _serv = new ServiceUM, QWidget* _mainWindow = nullptr);
+    CommandManager* cmdManager;
+    explicit UserForm(QWidget* parent = nullptr, ServiceUM* _serv = new ServiceUM, QWidget* _mainWindow = nullptr, CommandManager* _cmdManager = new CommandManager);
     ~UserForm();
 
     void StoreGlobalData();

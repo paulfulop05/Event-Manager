@@ -6,6 +6,7 @@
 #include "AdminForm.h"
 #include "ServiceUM.h"
 #include "ServiceAM.h"
+#include "CommandManager.h"
 
 class MainWindow : public QMainWindow
 {

@@ -1,8 +1,8 @@
 #include "AdminForm.h"
 #include <exception>
 
-AdminForm::AdminForm(QWidget* parent, ServiceAM* _serv, QWidget* _mainWindow)
-    : QMainWindow(parent), ui(new Ui::AdminWindowClass), serv (_serv), mainWindow (_mainWindow)
+AdminForm::AdminForm(QWidget* parent, ServiceAM* _serv, QWidget* _mainWindow, CommandManager* _cmdManager)
+    : QMainWindow(parent), ui(new Ui::AdminWindowClass), serv (_serv), mainWindow (_mainWindow), cmdManager(_cmdManager)
 {
     //ui->setupUi(this);
     setup();

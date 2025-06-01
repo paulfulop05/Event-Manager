@@ -1,7 +1,7 @@
 #include "UserForm.h"
 
-UserForm::UserForm(QWidget* parent, ServiceUM* _serv, QWidget* _mainWindow)
-    : QMainWindow(parent), ui(new Ui::UserWindowClass), serv (_serv), mainWindow (_mainWindow)
+UserForm::UserForm(QWidget* parent, ServiceUM* _serv, QWidget* _mainWindow, CommandManager* _cmdManager)
+    : QMainWindow(parent), ui(new Ui::UserWindowClass), serv (_serv), mainWindow (_mainWindow), cmdManager(_cmdManager)
 {
     //ui->setupUi(this);
     setup();
