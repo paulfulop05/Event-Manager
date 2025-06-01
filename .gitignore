@@ -1,32 +1,17 @@
-# Prerequisites
-*.d
+# Ignore all files
+*
+	
+# whitelist folders
+!*/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# whitelist source files
+!*.c
+!*.cpp
+!*.h
+!*.hint
+!*.qrc
+!*.ui
+!events.txt
+!user_events.txt
+!user_events.csv
+!user_events.html
