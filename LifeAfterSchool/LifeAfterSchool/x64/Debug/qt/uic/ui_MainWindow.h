@@ -26,12 +26,13 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *pushButtonSeeAdminEvents;
     QPushButton *pushButtonSeeUserEvents;
+    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindowClass)
     {
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName("MainWindowClass");
-        MainWindowClass->resize(298, 159);
+        MainWindowClass->resize(482, 286);
         centralWidget = new QWidget(MainWindowClass);
         centralWidget->setObjectName("centralWidget");
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -49,6 +50,9 @@ public:
         verticalLayout->addWidget(pushButtonSeeUserEvents);
 
         MainWindowClass->setCentralWidget(centralWidget);
+        statusBar = new QStatusBar(MainWindowClass);
+        statusBar->setObjectName("statusBar");
+        MainWindowClass->setStatusBar(statusBar);
 
         retranslateUi(MainWindowClass);
 
