@@ -339,8 +339,12 @@ void AdminForm::on_pushButtonAdd_clicked()
 
     try {
         labelErrorAdd->setStyleSheet("color:#549150");
-        serv->AddEvent(Event(lineEditTitleAdd->text().toStdString(), lineEditDescriptionAdd->text().toStdString(),
-            lineEditDateAdd->text().toStdString(), std::stoi(lineEditPartAdd->text().toStdString()), lineEditLinkAdd->text().toStdString()));
+        Event newEvent = Event(lineEditTitleAdd->text().toStdString(), lineEditDescriptionAdd->text().toStdString(),
+            lineEditDateAdd->text().toStdString(), std::stoi(lineEditPartAdd->text().toStdString()), lineEditLinkAdd->text().toStdString());
+        cmdManager->CommandExecute(new AddCommand(serv, nullptr, newEvent, AdminService));
+
+        //serv->AddEvent(Event(lineEditTitleAdd->text().toStdString(), lineEditDescriptionAdd->text().toStdString(),
+        //    lineEditDateAdd->text().toStdString(), std::stoi(lineEditPartAdd->text().toStdString()), lineEditLinkAdd->text().toStdString()));
 
         int newRow = tableWidgetEvents->rowCount();
         tableWidgetEvents->insertRow(newRow);
@@ -386,7 +390,10 @@ void AdminForm::on_pushButtonRemove_clicked()
 
     try {
         labelErrorRemove->setStyleSheet("color:#549150");
-        serv->RemoveEvent(lineEditEventRemove->text().toStdString());
+        Event event = Event();
+        event.title = lineEditEventRemove->text().toStdString();
+        cmdManager->CommandExecute(new RemoveCommand(serv, nullptr, serv->repo->events[serv->FindEvent(event)], AdminService));
+        //serv->RemoveEvent(lineEditEventRemove->text().toStdString());
         labelErrorRemove->setText("Event removed.");
         StoreData();
     }
@@ -409,11 +416,14 @@ void AdminForm::on_pushButtonUpdate_clicked()
     try {
         labelErrorUpdate->setStyleSheet("color:#549150");
 
-        Event auxEvent = Event();
-        auxEvent.title = lineEditTitleUpdate->text().toStdString();
+        Event auxEvent = Event(), newEvent = Event(lineEditTitleUpdate->text().toStdString(), lineEditDescriptionUpdate->text().toStdString(),
+            lineEditDateUpdate->text().toStdString(), std::stoi(lineEditPartUpdate->text().toStdString()), lineEditLinkUpdate->text().toStdString());
 
-        serv->UpdateEvent(auxEvent, Event(lineEditTitleUpdate->text().toStdString(), lineEditDescriptionUpdate->text().toStdString(),
-            lineEditDateUpdate->text().toStdString(), std::stoi(lineEditPartUpdate->text().toStdString()), lineEditLinkUpdate->text().toStdString()));
+        auxEvent.title = lineEditTitleUpdate->text().toStdString();
+        cmdManager->CommandExecute(new UpdateCommand(serv, nullptr, newEvent, serv->repo->events[serv->FindEvent(auxEvent)], AdminService));
+
+       /* serv->UpdateEvent(auxEvent, Event(lineEditTitleUpdate->text().toStdString(), lineEditDescriptionUpdate->text().toStdString(),
+            lineEditDateUpdate->text().toStdString(), std::stoi(lineEditPartUpdate->text().toStdString()), lineEditLinkUpdate->text().toStdString()));*/
         StoreData();
         labelErrorUpdate->setText("Event has been updated.");
     }
@@ -424,11 +434,13 @@ void AdminForm::on_pushButtonUpdate_clicked()
 }
 
 void AdminForm::on_pushButtonUndo_clicked() {
-    pushButtonUndo->setText("Test");
+    cmdManager->CommandUndo();
+    StoreData();
 }
 
 void  AdminForm::on_pushButtonRedo_clicked() {
-    pushButtonRedo->setText("Test");
+    cmdManager->CommandRedo();
+    StoreData();
 }
 
 void AdminForm::closeEvent(QCloseEvent* event)
