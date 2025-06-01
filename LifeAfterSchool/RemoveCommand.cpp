@@ -8,5 +8,5 @@ void RemoveCommand::Execute() {
 }
 
 void RemoveCommand::Undo() {
-	whichServ == AdminService ? globalServ->AddEvent(event) : userServ->AddUserEvent(globalServ->FindEvent(event));
+	whichServ == AdminService ? globalServ->AddEvent(event) : userServ->AddUserEvent(userServ->FindEvent(event));
 }

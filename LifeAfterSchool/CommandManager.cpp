@@ -3,6 +3,8 @@
 void CommandManager::CommandExecute(Command* cmd) {
 	undoStack.push(cmd);
 	cmd->Execute();
+	while (!redoStack.empty())
+		redoStack.pop();
 }
 
 void CommandManager::CommandUndo() {

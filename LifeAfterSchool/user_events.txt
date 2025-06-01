@@ -1,1 +1,6 @@
+title1,desc1,03/22/2025,104,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop
 title2,desc2,03/30/2022,1205,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop
+title3,desc3,04/17/2024,54,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop
+title4,desc4,08/22/2020,50002,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop
+title9,desc9,02/27/2025,3125,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop
+title10,desc11,03/04/2000,1002,https://github.com/cs-ubbcluj-ro/a4-5-PaulFulop

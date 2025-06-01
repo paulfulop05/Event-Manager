@@ -359,9 +359,12 @@ void UserForm::on_pushButtonAdd_clicked()
         if (!rc)
             throw OutOfRangeException();
 
-        Event newEvent = serv->globalRepo->events[(((currentRow - 1) % rc) + rc) % rc];
+        int pos = (((currentRow - 1) % rc) + rc) % rc;
+        Event newEvent = serv->globalRepo->events[pos];
+        serv->AddUserEvent(pos);
+        serv->RemoveUserEvent(newEvent.title);
+
         cmdManager->CommandExecute(new AddCommand(nullptr, serv, newEvent, UserService));
-        //serv->AddUserEvent((((currentRow - 1) % rc) + rc) % rc);
 
         int newRow = tableWidgetUserEvents->rowCount();
         tableWidgetUserEvents->insertRow(newRow);
